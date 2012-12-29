@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test localStorage-cache</title>
+    
+    <!-- lib de test/spec -->
+    <link rel="stylesheet" type="text/css" href="lib/jasmine.css">
+    <script src="lib/jasmine.js"></script>
+    <script src="lib/jasmine-html.js"></script>
+    <!-- fichier de test/spec -->
+    <script src="test.js"></script>
+    <!-- fichier métier -->
+    <script src="../src/lsCache.js"></script>
+    
+    
+    
+    
+    
+    <!-- exécute les tests/spec -->
+    <script type="text/javascript">
+    (function() {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+        
+        var htmlReporter = new jasmine.HtmlReporter();
+        
+        jasmineEnv.addReporter(htmlReporter);
+        
+        jasmineEnv.specFilter = function(spec) {
+            return htmlReporter.specFilter(spec);
+        };
+        
+        var currentWindowOnload = window.onload;
+        
+        window.onload = function() {
+            if (currentWindowOnload) {
+                currentWindowOnload();
+            }
+            execJasmine();
+        };
+        
+        function execJasmine() {
+            jasmineEnv.execute();
+        }
+        
+    })();
+  </script>
+</head>
+<body>
+</body>
+</html>
